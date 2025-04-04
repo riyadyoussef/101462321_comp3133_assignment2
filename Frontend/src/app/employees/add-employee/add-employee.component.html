@@ -1,0 +1,18 @@
+<h2>Add Employee</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <input [(ngModel)]="employee.first_name" name="first_name" placeholder="First Name" required />
+  <input [(ngModel)]="employee.last_name" name="last_name" placeholder="Last Name" required />
+  <input [(ngModel)]="employee.email" name="email" placeholder="Email" required type="email" />
+  <input [(ngModel)]="employee.gender" name="gender" placeholder="Gender" required />
+  <input [(ngModel)]="employee.designation" name="designation" placeholder="Designation" required />
+  <input [(ngModel)]="employee.salary" name="salary" placeholder="Salary" type="number" required />
+  <input [(ngModel)]="employee.date_of_joining" name="date_of_joining" placeholder="Joining Date" type="date" required />
+  <input [(ngModel)]="employee.department" name="department" placeholder="Department" required />
+  <input [(ngModel)]="employee.employee_photo" name="employee_photo" placeholder="Photo URL" />
+
+  <button type="submit">Add</button>
+</form>
+
+<p style="color: green" *ngIf="success">{{ success }}</p>
+<p style="color: red" *ngIf="error">{{ error }}</p>

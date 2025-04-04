@@ -1,0 +1,11 @@
+<h2>Update Employee</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <input [(ngModel)]="employee.first_name" name="first_name" placeholder="First Name" required />
+  <input [(ngModel)]="employee.last_name" name="last_name" placeholder="Last Name" required />
+  <input [(ngModel)]="employee.designation" name="designation" placeholder="Designation" required />
+  <input [(ngModel)]="employee.department" name="department" placeholder="Department" required />
+  <input [(ngModel)]="employee.salary" name="salary" placeholder="Salary" type="number" required />
+
+  <button type="submit">Update</button>
+</form>
