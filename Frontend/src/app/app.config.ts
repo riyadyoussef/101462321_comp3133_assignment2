@@ -1,8 +1,5 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+export const AppConfig = {
+  graphqlEndpoint: 'http://localhost:4000/graphql',
+  appName: 'Employee Management System',
+  version: '1.0.0'
 };

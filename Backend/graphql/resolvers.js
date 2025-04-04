@@ -1,4 +1,8 @@
 const Employee = require("../models/Employee");
+const bcrypt = require('bcryptjs'); // ✅ use bcryptjs for smoother setup
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+
 
 const resolvers = {
   Query: {

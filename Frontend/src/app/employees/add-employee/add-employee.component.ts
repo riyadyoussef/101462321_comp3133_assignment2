@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-employee',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-employee.component.html',
-  styleUrls: ['./add-employee.component.css']
+  // styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent {
   employee: any = {
