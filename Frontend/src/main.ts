@@ -10,11 +10,15 @@ import { HttpLink } from 'apollo-angular/http';
 import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { inject } from '@angular/core';
+import { environment } from './environments/environment.prod'; // ✅ Use environment value
 
 const provideApolloClient = () => {
-  const httpLink = inject(HttpLink); // Angular DI
-  const uri = 'http://localhost:4000/graphql';
+  const httpLink = inject(HttpLink);
 
+  // ✅ Use production backend URL from environment config
+  const uri = environment.apiUrl;
+
+  // ✅ Attach JWT token from localStorage
   const authLink = setContext(() => {
     const token = localStorage.getItem('token');
     return {
