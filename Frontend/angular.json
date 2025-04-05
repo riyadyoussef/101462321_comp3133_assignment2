@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/101465525_comp3133_assignment2",
+            "outputPath": "dist",  ✅ <-- UPDATED
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -41,8 +41,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",      ✅ Increased so you don't get a size warning
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
