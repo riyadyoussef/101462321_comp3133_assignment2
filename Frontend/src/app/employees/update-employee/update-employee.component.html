@@ -1,11 +1,35 @@
-<h2>Update Employee</h2>
-
-<form (ngSubmit)="onSubmit()">
-  <input [(ngModel)]="employee.first_name" name="first_name" placeholder="First Name" required />
-  <input [(ngModel)]="employee.last_name" name="last_name" placeholder="Last Name" required />
-  <input [(ngModel)]="employee.designation" name="designation" placeholder="Designation" required />
-  <input [(ngModel)]="employee.department" name="department" placeholder="Department" required />
-  <input [(ngModel)]="employee.salary" name="salary" placeholder="Salary" type="number" required />
-
-  <button type="submit">Update</button>
-</form>
+<div class="form-card">
+    <h2 class="title">Update Employee</h2>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>First Name:</label>
+        <input [(ngModel)]="employee.first_name" name="first_name" required />
+      </div>
+      <div class="form-group">
+        <label>Last Name:</label>
+        <input [(ngModel)]="employee.last_name" name="last_name" required />
+      </div>
+      <div class="form-group">
+        <label>Designation:</label>
+        <input [(ngModel)]="employee.designation" name="designation" required />
+      </div>
+      <div class="form-group">
+        <label>Department:</label>
+        <input [(ngModel)]="employee.department" name="department" required />
+      </div>
+      <div class="form-group">
+        <label>Salary:</label>
+        <input type="number" [(ngModel)]="employee.salary" name="salary" required />
+      </div>
+  
+      <div class="btn-group">
+        <button type="submit" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+      </div>
+  
+      <p class="success" *ngIf="success">{{ success }}</p>
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </form>
+  </div>
+  

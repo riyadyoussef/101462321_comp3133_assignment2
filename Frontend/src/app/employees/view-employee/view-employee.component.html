@@ -1,14 +1,20 @@
-<h2>Employee Details</h2>
-
-<div *ngIf="employee; else loadingOrError">
-  <p><strong>Name:</strong> {{ employee.first_name }} {{ employee.last_name }}</p>
-  <p><strong>Email:</strong> {{ employee.email }}</p>
-  <p><strong>Designation:</strong> {{ employee.designation }}</p>
-  <p><strong>Department:</strong> {{ employee.department }}</p>
-  <p><strong>Salary:</strong> ${{ employee.salary }}</p>
-</div>
-
-<ng-template #loadingOrError>
-  <p *ngIf="error" style="color: red">{{ error }}</p>
-  <p *ngIf="!error">Loading employee data...</p>
-</ng-template>
+<div class="view-card">
+    <h2 class="title">View Employee Details</h2>
+  
+    <div class="info">
+      <p><strong>First Name:</strong> {{ employee?.first_name }}</p>
+      <p><strong>Last Name:</strong> {{ employee?.last_name }}</p>
+      <p><strong>Email:</strong> {{ employee?.email }}</p>
+      <p><strong>Gender:</strong> {{ employee?.gender }}</p>
+      <p><strong>Designation:</strong> {{ employee?.designation }}</p>
+      <p><strong>Salary:</strong> {{ employee?.salary }}</p>
+      <p><strong>Date of Joining:</strong> {{ employee?.date_of_joining }}</p>
+      <p><strong>Department:</strong> {{ employee?.department }}</p>
+      <p><strong>Photo URL:</strong> {{ employee?.employee_photo }}</p>
+    </div>
+  
+    <div class="btn-group">
+      <button class="btn btn-secondary" (click)="goBack()">Back</button>
+    </div>
+  </div>
+  

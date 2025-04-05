@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './add-employee.component.html',
-  // styleUrls: ['./add-employee.component.css']
+  styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent {
   employee: any = {
@@ -41,4 +41,9 @@ export class AddEmployeeComponent {
       }
     });
   }
+
+  cancel() {
+    this.router.navigate(['/employees']);
+  }
 }
+  

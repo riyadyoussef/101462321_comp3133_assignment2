@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './employee-list.component.html',
-  // styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
@@ -32,15 +33,15 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  viewEmployee(id: string) {
+  onView(id: string) {
     this.router.navigate([`/employees/${id}`]);
   }
 
-  updateEmployee(id: string) {
+  onUpdate(id: string) {
     this.router.navigate([`/employees/${id}/update`]);
   }
 
-  deleteEmployee(id: string) {
+  onDelete(id: string) {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.employeeService.deleteEmployee(id).subscribe({
         next: () => {

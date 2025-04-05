@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #343a40; /* Dark grey/black */
+    padding: 10px 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .navbar-title {
+    margin: 0;
+  }
+  

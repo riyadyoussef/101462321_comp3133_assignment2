@@ -10,16 +10,17 @@ export class AuthService {
   constructor(private apollo: Apollo, private router: Router) {}
 
   signup(username: string, email: string, password: string) {
-    const SIGNUP = gql`
-      mutation {
-        signup(username: "${username}", email: "${email}", password: "${password}") {
-          username
-          email
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation {
+          signup(username: "${username}", email: "${email}", password: "${password}") {
+            username
+            email
+            created_at
+          }
         }
-      }
-    `;
-
-    return this.apollo.mutate({ mutation: SIGNUP });
+      `
+    });
   }
 
   login(username: string, email: string, password: string) {

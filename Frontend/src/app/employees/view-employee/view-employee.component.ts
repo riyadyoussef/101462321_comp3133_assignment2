@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 import { CommonModule } from '@angular/common';
 
@@ -8,27 +8,32 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './view-employee.component.html',
-  // styleUrls: ['./view-employee.component.css']
+  styleUrls: ['./view-employee.component.css']
 })
 export class ViewEmployeeComponent implements OnInit {
   employee: any;
-  error: string = '';
 
   constructor(
+    private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private employeeService: EmployeeService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    this.employeeService.getEmployeeById(id).subscribe({
-      next: (result: any) => {
-        this.employee = result.data.searchEmployeeById;
-      },
-      error: (err) => {
-        console.error(err);
-        this.error = 'Failed to load employee details';
-      }
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.employeeService.getEmployeeById(id).subscribe({
+        next: (result: any) => {
+          this.employee = result.data.searchEmployeeById;
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+    }
+  }
+
+  goBack() {
+    this.router.navigate(['/employees']);
   }
 }
