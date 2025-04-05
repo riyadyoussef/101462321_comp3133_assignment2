@@ -53,7 +53,29 @@ export class EmployeeService {
       `
     });
   }
-  
+
+  // ✅ FIXED this method — removed comma, added semicolon
+  searchEmployees(department: string, designation: string) {
+    return this.apollo.query({
+      query: gql`
+        query ($department: String, $designation: String) {
+          searchEmployeeByDesignationOrDepartment(department: $department, designation: $designation) {
+            _id
+            first_name
+            last_name
+            email
+            department
+            designation
+          }
+        }
+      `,
+      variables: {
+        department,
+        designation
+      }
+    });
+  }
+
   addEmployee(data: any) {
     return this.apollo.mutate({
       mutation: gql`
@@ -75,7 +97,7 @@ export class EmployeeService {
       `
     });
   }
-  
+
   updateEmployee(id: string, data: any) {
     return this.apollo.mutate({
       mutation: gql`
@@ -94,6 +116,4 @@ export class EmployeeService {
       `
     });
   }
-  
-
 }

@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  constructor(private router: Router) {}
+
+  logout() {
+    // Clear token from localStorage or session
+    localStorage.removeItem('token');
+    
+    // Redirect to login
+    this.router.navigate(['/login']);
+  }
+}

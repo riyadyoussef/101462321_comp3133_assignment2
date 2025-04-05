@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
+  searchDept: string = '';
+  searchDesignation: string = '';
   error: string = '';
 
   constructor(private employeeService: EmployeeService, private router: Router) {}
@@ -33,19 +35,28 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
-  onView(id: string) {
-    this.router.navigate([`/employees/${id}`]);
+  search() {
+    this.employeeService.searchEmployees(this.searchDept, this.searchDesignation).subscribe({
+      next: (result: any) => {
+        this.employees = result.data.searchEmployeeByDesignationOrDepartment;
+      },
+      error: (err) => {
+        console.error(err);
+        this.error = 'Failed to search employees';
+      }
+    });
   }
 
-  onUpdate(id: string) {
+  updateEmployee(id: string) {
     this.router.navigate([`/employees/${id}/update`]);
   }
+  
 
-  onDelete(id: string) {
+  deleteEmployee(id: string) {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.employeeService.deleteEmployee(id).subscribe({
         next: () => {
-          this.loadEmployees(); // refresh list
+          this.loadEmployees(); // Refresh list
         },
         error: (err) => {
           console.error(err);
@@ -53,5 +64,13 @@ export class EmployeeListComponent implements OnInit {
         }
       });
     }
+  }
+
+  viewEmployee(id: string) {
+    this.router.navigate([`/employees/${id}`]);
+  }
+
+  navigateToAdd() {
+    this.router.navigate(['/employees/add']);
   }
 }
