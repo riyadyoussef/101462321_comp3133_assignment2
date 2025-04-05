@@ -12,11 +12,12 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewEmployeeComponent implements OnInit {
   employee: any;
+  error: string = '';
 
   constructor(
-    private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private employeeService: EmployeeService
   ) {}
 
   ngOnInit(): void {
@@ -28,8 +29,10 @@ export class ViewEmployeeComponent implements OnInit {
         },
         error: (err) => {
           console.error(err);
+          this.error = 'Failed to load employee';
         }
       });
+      
     }
   }
 

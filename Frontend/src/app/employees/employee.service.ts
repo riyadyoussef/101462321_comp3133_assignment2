@@ -48,6 +48,7 @@ export class EmployeeService {
             designation
             department
             salary
+            employee_photo
           }
         }
       `

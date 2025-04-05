@@ -24,10 +24,26 @@ export class AddEmployeeComponent {
     employee_photo: ''
   };
 
+  photoPreview: string | ArrayBuffer | null = null;
   error: string = '';
   success: string = '';
 
   constructor(private employeeService: EmployeeService, private router: Router) {}
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.photoPreview = reader.result;
+        this.employee.employee_photo = reader.result; // Save base64 to send to backend
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
 
   onSubmit() {
     this.employeeService.addEmployee(this.employee).subscribe({
@@ -46,4 +62,3 @@ export class AddEmployeeComponent {
     this.router.navigate(['/employees']);
   }
 }
-  
