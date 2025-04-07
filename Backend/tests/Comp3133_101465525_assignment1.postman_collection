@@ -17,7 +17,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "mutation {\r\n  signup(username: \"jason\", email: \"jason@example.com\", password: \"password\") {\r\n    username\r\n    email\r\n    created_at\r\n  }\r\n}\r\n",
+						"query": "mutation {\r\n  signup(username: \"riyad\", email: \"riyad@example.com\", password: \"password\") {\r\n    username\r\n    email\r\n    created_at\r\n  }\r\n}\r\n",
 						"variables": ""
 					}
 				},
@@ -53,7 +53,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "query {\r\n  login(username: \"jason\", email: \"jason@example.com\", password: \"password\")\r\n}\r\n",
+						"query": "query {\r\n  login(username: \"riyad\", email: \"riyad@example.com\", password: \"password\")\r\n}\r\n",
 						"variables": ""
 					}
 				},
